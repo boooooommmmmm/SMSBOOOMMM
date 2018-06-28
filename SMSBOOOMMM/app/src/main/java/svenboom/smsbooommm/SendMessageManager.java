@@ -14,11 +14,10 @@ public class SendMessageManager implements Runnable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public void messageSending() {
         SmsManager sms = SmsManager.getDefault();
-
         sms.sendTextMessage(phoneNumber, null, message, null, null);
-
     }
 
     @Override

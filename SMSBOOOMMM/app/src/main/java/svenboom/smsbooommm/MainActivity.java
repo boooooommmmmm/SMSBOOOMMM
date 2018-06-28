@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         for (i = 0; i < numberOfMessages; i++) {
 
 
-            handler.postDelayed(sendMessageManager.messageSending(), 1000*i);
+            handler.postDelayed(new SendMessageManager(), 1000*i);
             displayMessage.setText("Message had sent: " + i);
         }
 
