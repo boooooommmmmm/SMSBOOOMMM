@@ -2,7 +2,7 @@ package svenboom.smsbooommm;
 
 import android.telephony.SmsManager;
 
-public class SendMessageManager implements Runnable {
+public class SendMessageManager {
 
     String phoneNumber = "";
     String message = "";
@@ -19,10 +19,5 @@ public class SendMessageManager implements Runnable {
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
-
-    @Override
-    public void run() {
-
-        messageSending();
-    }
 }
+
