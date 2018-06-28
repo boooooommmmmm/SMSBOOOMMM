@@ -1,9 +1,7 @@
 package svenboom.smsbooommm;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,8 +48,11 @@ public class MainActivity extends AppCompatActivity {
         for (i = 0; i < numberOfMessages; i++) {
             sendMessageManager = new SendMessageManager();
 
-            sendMessageManager.messageSending(phoneNumberStr,message+i);
+            sendMessageManager.messageSending(phoneNumberStr, message + i);
+            displayMessage.setText("Message had sent: " + i);
+        }
+
+
+
     }
-
-
 }
