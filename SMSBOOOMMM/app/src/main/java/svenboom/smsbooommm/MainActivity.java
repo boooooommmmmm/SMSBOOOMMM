@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
         numberOfMessages = Integer.parseInt(messageTime.getText().toString());
         for (i = 0; i < numberOfMessages; i++) {
+            SendMessageManager sendMessageManager = new SendMessageManager();
+
             messageSending();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -49,15 +51,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void messageSending() {
-        SmsManager sms = SmsManager.getDefault();
-        EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
-        TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
-        String phoneNumberStr = phoneNumberEdit.getText().toString();
 
-
-        String message = "Test message" + i;
-        displayMessage.setText("Message had sent: " + i);
-        sms.sendTextMessage(phoneNumberStr, null, message, null, null);
-    }
 }
