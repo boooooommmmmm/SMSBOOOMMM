@@ -40,21 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
         numberOfMessages = Integer.parseInt(messageTime.getText().toString());
-
         EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
-        String phoneNumberStr = phoneNumberEdit.getText().toString();
-        sendMessageManager.setPhoneNumber(phoneNumberStr);
-
         TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
 
-
+        String phoneNumberStr = phoneNumberEdit.getText().toString();
+        sendMessageManager.setPhoneNumber(phoneNumberStr);
         String message = messageManager.getMessage();
+        sendMessageManager.setMessage(message);
+
         for (i = 0; i < numberOfMessages; i++) {
-            sendMessageManager = new SendMessageManager();
 
-            sendMessageManager.messageSending();
 
-            handler.postDelayed(sendMessageManager.messageSending(phoneNumberStr, message + i), 1000*i);
+            handler.postDelayed(sendMessageManager.messageSending(), 1000*i);
             displayMessage.setText("Message had sent: " + i);
         }
 
