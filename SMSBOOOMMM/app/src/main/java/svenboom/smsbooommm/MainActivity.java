@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private void sendSMS() throws InterruptedException {
         SendMessageManager sendMessageManager = new SendMessageManager();
         MessageManager messageManager = new MessageManager();
