@@ -38,10 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private void sendSMS() throws InterruptedException {
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
         numberOfMessages = Integer.parseInt(messageTime.getText().toString());
+        EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
+        String phoneNumberStr = phoneNumberEdit.getText().toString();
+        TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
+
         for (i = 0; i < numberOfMessages; i++) {
             SendMessageManager sendMessageManager = new SendMessageManager();
 
-            messageSending();
+            sendMessageManager.messageSending(phoneNumberStr,m);
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {

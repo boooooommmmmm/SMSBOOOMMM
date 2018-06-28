@@ -6,11 +6,10 @@ import android.widget.TextView;
 
 public class SendMessageManager {
 
-    public void messageSending() {
+    public void messageSending(String phoneNumber, String message) {
         SmsManager sms = SmsManager.getDefault();
-        EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
-        TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
-        String phoneNumberStr = phoneNumberEdit.getText().toString();
+
+
 
 
         String message = "Test message";
