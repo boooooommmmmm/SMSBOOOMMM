@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendSMS() throws InterruptedException {
 //        final SendMessageManager sendMessageManager = new SendMessageManager(getApplicationContext());
         final SendMessageManager sendMessageManager = new SendMessageManager();
-        final MessageManager messageManager = new MessageManager();
+        MessageManager messageManager = new MessageManager();
 
 
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
@@ -49,20 +49,20 @@ public class MainActivity extends AppCompatActivity {
         String message = messageManager.getMessage();
         sendMessageManager.setMessage(message);
 
+        for (i = 1; i <= numberOfMessages; i++) {
+            sendMessageManager.setMessageConunt(i+"");
 
-        Handler handler = new Handler();
-        Runnable myRunnable = new Runnable() {
-            public void run() {
-                for (i = 1; i <= numberOfMessages; i++) {
-                    sendMessageManager.setMessageConunt(i + "");
+            Handler handler=  new Handler();
+            Runnable myRunnable = new Runnable() {
+                public void run() {
                     sendMessageManager.messageSending();
                     displayMessage.setText("Message had sent: " + i);
                 }
-            }
-        };
-        handler.postDelayed(myRunnable, 5000 * i);
+            };
+            handler.postDelayed(myRunnable,5000*i);
+            //displayMessage.setText("Message had sent: " + i);
+        }
 
-        //displayMessage.setText("Message had sent: " + i);
 
 
     }
