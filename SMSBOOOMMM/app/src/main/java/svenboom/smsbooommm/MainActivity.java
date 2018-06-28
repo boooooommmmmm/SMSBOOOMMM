@@ -49,21 +49,20 @@ public class MainActivity extends AppCompatActivity {
         String message = messageManager.getMessage();
         sendMessageManager.setMessage(message);
 
-        for (i = 1; i <= numberOfMessages; i++) {
-            sendMessageManager.setMessageConunt(i+"");
 
-            Handler handler=  new Handler();
-            Runnable myRunnable = new Runnable() {
-                public void run() {
+        Handler handler = new Handler();
+        Runnable myRunnable = new Runnable() {
+            public void run() {
+                for (i = 1; i <= numberOfMessages; i++) {
+                    sendMessageManager.setMessageConunt(i + "");
                     sendMessageManager.messageSending();
                     displayMessage.setText("Message had sent: " + i);
                 }
-            };
-            handler.postDelayed(myRunnable,5000*i);
+            }
+        };
+        handler.postDelayed(myRunnable, 5000 * i);
 
-            //displayMessage.setText("Message had sent: " + i);
-        }
-
+        //displayMessage.setText("Message had sent: " + i);
 
 
     }
