@@ -1,6 +1,7 @@
 package svenboom.smsbooommm;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -35,11 +36,15 @@ public class MainActivity extends AppCompatActivity {
     private void sendSMS() throws InterruptedException {
         SendMessageManager sendMessageManager = new SendMessageManager();
         MessageManager messageManager = new MessageManager();
+        Handler handler = new Handler();
 
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
         numberOfMessages = Integer.parseInt(messageTime.getText().toString());
+
         EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
         String phoneNumberStr = phoneNumberEdit.getText().toString();
+        sendMessageManager.setPhoneNumber(phoneNumberStr);
+
         TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
 
 
@@ -47,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         for (i = 0; i < numberOfMessages; i++) {
             sendMessageManager = new SendMessageManager();
 
-            sendMessageManager.messageSending(phoneNumberStr, message + i);
+            sendMessageManager.messageSending();
+
+            handler.postDelayed(sendMessageManager.messageSending(phoneNumberStr, message + i), 1000*i);
             displayMessage.setText("Message had sent: " + i);
         }
 
