@@ -1,9 +1,7 @@
 package svenboom.smsbooommm;
 
-import android.app.Activity;
 import android.content.Context;
 import android.telephony.SmsManager;
-import android.widget.TextView;
 
 public class SendMessageManager {
 
@@ -13,9 +11,9 @@ public class SendMessageManager {
     String messageConunt = "";
 
 
-    public SendMessageManager(Context context){
-        this.context=context;
-    }
+//    public SendMessageManager(Context context){
+//        this.context=context;
+//    }
     
     public void setMessage(String message) {
         this.message = message;
@@ -32,8 +30,8 @@ public class SendMessageManager {
     public void messageSending() {
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phoneNumber, null, message, null, null);
-        TextView scheduleDisplayView = (TextView) ((Activity)context).findViewById(R.id.text);
-        scheduleDisplayView.setText("Message has send: " + messageConunt);
+//        TextView scheduleDisplayView = (TextView) ((Activity)context).findViewById(R.id.text);
+//        scheduleDisplayView.setText("Message has send: " + messageConunt);
     }
 }
 

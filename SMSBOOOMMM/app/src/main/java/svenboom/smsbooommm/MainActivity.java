@@ -34,14 +34,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendSMS() throws InterruptedException {
-        final SendMessageManager sendMessageManager = new SendMessageManager(getApplicationContext());
-        MessageManager messageManager = new MessageManager();
+//        final SendMessageManager sendMessageManager = new SendMessageManager(getApplicationContext());
+        final SendMessageManager sendMessageManager = new SendMessageManager();
+        final MessageManager messageManager = new MessageManager();
 
 
         TextView messageTime = (TextView) findViewById(R.id.MessageTime);
         numberOfMessages = Integer.parseInt(messageTime.getText().toString());
         EditText phoneNumberEdit = (EditText) findViewById(R.id.PhoneNumber);
-        TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
+        final TextView displayMessage = (TextView) findViewById(R.id.DisplayText);
 
         String phoneNumberStr = phoneNumberEdit.getText().toString();
         sendMessageManager.setPhoneNumber(phoneNumberStr);
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             Runnable myRunnable = new Runnable() {
                 public void run() {
                     sendMessageManager.messageSending();
+                    displayMessage.setText("Message had sent: " + i);
                 }
             };
             handler.postDelayed(myRunnable,5000*i);
